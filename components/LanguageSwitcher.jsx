@@ -1,5 +1,6 @@
 "use client";
 
+import serverRedirect from "@/app/utils/serverRedirect";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -18,7 +19,7 @@ const LanguageSwitcher = () => {
   );
   const [showMenu, setShowMenu] = useState(false);
 
-  const handleLanguageChange = (lang) => {
+  const handleLanguageChange = async (lang) => {
     setSelectedLanguage(languages.find((entry) => entry.code === lang));
     setShowMenu(false);
 
@@ -28,7 +29,7 @@ const LanguageSwitcher = () => {
       updatedPath = `/${lang}${pathname}`;
     }
 
-    router.push(updatedPath);
+    serverRedirect(updatedPath);
   };
 
   useEffect(() => {
