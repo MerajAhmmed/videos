@@ -34,7 +34,7 @@ export default async function Header({ lang }) {
         <div className="relative">
           <input
             type="text"
-            placeholder="Search"
+            placeholder={dict.Search}
             className="bg-color-gray rounded-full py-2 px-4 w-64 focus:outline-none focus:ring-2 focus:ring-color-purple"
           />
           <svg
