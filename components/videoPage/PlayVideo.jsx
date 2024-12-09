@@ -1,15 +1,11 @@
-import { getDictionary } from "@/app/[lang]/dictionaries/dictionaries";
 import Image from "next/image";
 
-export default async function PlayVideo({ lang }) {
-  const { default: videos } = await import("../../data/videos.json");
-  const dict = await getDictionary(lang);
-  const video = videos[3];
+export default function PlayVideo({ dict, video, matchVideo }) {
   return (
-    <div className="lg:w-3/4">
+    <>
       <div className="relative">
         <iframe
-          src={video.thumbnail}
+          src={matchVideo.thumbnail}
           title="YouTube video player"
           frameBorder="0"
           className="w-full aspect-video h-[500px]"
@@ -52,10 +48,7 @@ export default async function PlayVideo({ lang }) {
           </div>
         </div>
       </div>
-      <h1 className="text-2xl font-bold mt-4">
-        GTA V : BATMAN WAS KIDNAPPED || GTA V Bangla GAMEPLAY || Professor Of Pc
-        Gaming
-      </h1>
+      <h1 className="text-2xl font-bold mt-4">{matchVideo.description}</h1>
       <div className="flex items-center space-x-4 mt-2">
         <Image
           src="/avatar.png"
@@ -65,12 +58,12 @@ export default async function PlayVideo({ lang }) {
           width={100}
         />
         <div>
-          <p className="font-semibold">Professor Of Pc Gaming</p>
+          <p className="font-semibold">{matchVideo.channelTitle}</p>
         </div>
         <button className="bg-color-purple hover:bg-opacity-80 text-white px-4 py-1 rounded-full text-sm ml-auto">
           {dict.Subscribe}
         </button>
       </div>
-    </div>
+    </>
   );
 }

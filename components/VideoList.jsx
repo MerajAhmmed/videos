@@ -19,7 +19,7 @@ export default async function VideoList({ lang }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {videos.map((video) => (
           <Link
-            href={`/videos/${video.videoId}`}
+            href={`/${lang}/videos/${video.videoId}`}
             className="rounded-lg overflow-hidden bg-color-gray"
             key={video.videoId}
           >
