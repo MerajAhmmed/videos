@@ -3,12 +3,13 @@ import Image from "next/image";
 
 export default async function VideoSideBar({ lang }) {
   const { default: videos } = await import("../../data/videos.json");
+  const videosToShow = videos.slice(0, 7);
   const dict = await getDictionary(lang);
   return (
     <div className="lg:w-1/4">
       <h2 className="text-xl font-semibold mb-4">{dict.YouMayLike}</h2>
       <div className="space-y-4">
-        {videos.map((video) => (
+        {videosToShow.map((video) => (
           <div className="flex items-start space-x-4" key={video.videoId}>
             <Image
               src={video.thumbnail}
